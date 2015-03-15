@@ -35,6 +35,23 @@ class ViewController: UIViewController {
         
     }
     
+    func getJSON(urlToRequest: String) -> NSData{
+        loadDataFromURL(NSURL(string: TopAppURL)!, completion:{(data, error) -> Void in
+            //2
+            if let urlData = data {
+                //3
+                success(iTunesData: urlData)
+            }
+        })
+    }
+    
+    func parseJSON(inputData: NSData) -> Array<NSDictionary>{
+        var error: NSError?
+        var boardsDictionary = NSJSONSerialization.JSONObjectWithData(inputData, options: NSJSONReadingOptions.MutableContainers, error: &error) as Array<NSDictionary>
+        
+        return boardsDictionary
+    }
+    
 
 
 }

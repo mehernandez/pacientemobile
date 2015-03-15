@@ -108,6 +108,7 @@
                         <viewControllerLayoutGuide type="bottom" id="9dc-Ch-tC0"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="yUQ-vt-scT">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="72" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="xl9-J7-f8R">
@@ -246,6 +247,7 @@
                         <viewControllerLayoutGuide type="bottom" id="XNV-TN-RRB"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ES9-rN-rhw">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Descripción" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pwz-i6-1PI">
@@ -318,6 +320,7 @@
                         <viewControllerLayoutGuide type="bottom" id="L5J-j6-Gwt"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="y2p-KV-F7D">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
