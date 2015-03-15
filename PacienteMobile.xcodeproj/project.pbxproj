@@ -13,6 +13,7 @@
 		E16E62CE1AB530B9005768EF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E16E62CD1AB530B9005768EF /* Images.xcassets */; };
 		E16E62D11AB530B9005768EF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E16E62CF1AB530B9005768EF /* LaunchScreen.xib */; };
 		E16E62DD1AB530B9005768EF /* PacienteMobileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16E62DC1AB530B9005768EF /* PacienteMobileTests.swift */; };
+		E16E62E71AB5CFF5005768EF /* Paciente.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16E62E61AB5CFF5005768EF /* Paciente.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		E16E62D61AB530B9005768EF /* PacienteMobileTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PacienteMobileTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E16E62DB1AB530B9005768EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E16E62DC1AB530B9005768EF /* PacienteMobileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacienteMobileTests.swift; sourceTree = "<group>"; };
+		E16E62E61AB5CFF5005768EF /* Paciente.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Paciente.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				E16E62CD1AB530B9005768EF /* Images.xcassets */,
 				E16E62CF1AB530B9005768EF /* LaunchScreen.xib */,
 				E16E62C41AB530B9005768EF /* Supporting Files */,
+				E16E62E61AB5CFF5005768EF /* Paciente.swift */,
 			);
 			path = PacienteMobile;
 			sourceTree = "<group>";
@@ -212,6 +215,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E16E62E71AB5CFF5005768EF /* Paciente.swift in Sources */,
 				E16E62C91AB530B9005768EF /* ViewController.swift in Sources */,
 				E16E62C71AB530B9005768EF /* AppDelegate.swift in Sources */,
 			);
@@ -407,6 +411,7 @@
 				E16E62E21AB530B9005768EF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E16E62E31AB530B9005768EF /* Build configuration list for PBXNativeTarget "PacienteMobileTests" */ = {
 			isa = XCConfigurationList;
@@ -415,6 +420,7 @@
 				E16E62E51AB530B9005768EF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
