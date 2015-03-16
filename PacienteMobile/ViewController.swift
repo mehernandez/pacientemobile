@@ -22,29 +22,45 @@ class ViewController: UIViewController {
     
     @IBAction func logear() {
         
-        var request = HTTPTask()
-        request.GET("http://vluxe.io", parameters: nil, success: {(response: HTTPResponse) in
-            if response.responseObject != nil {
-                let data = response.responseObject as NSData
-                let str = NSString(data: data, encoding: NSUTF8StringEncoding)
-                println("response: \(str)") //prints the HTML of the page
+        var googleUrl = NSURL(string: "http://neuromed.herokuapp.com/api/doctor")
+        
+        var request = NSMutableURLRequest(URL: googleUrl!)
+        request.HTTPMethod = "GET"
+        request.addValue("text/html", forHTTPHeaderField: "Content-Type")
+        
+        var session = NSURLSession.sharedSession()
+        
+        let task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
+            if((error) != nil) {
+                println(error.localizedDescription)
             }
-            },failure: {(error: NSError) in
-                println("error: \(error)")
+            
+            var strData = NSString(data: data, encoding: NSASCIIStringEncoding)
+            println(strData)
         })
         
+        task.resume()
+        
+        
+        
+        
+        //let url = NSURL(string: "http://neuromed.herokuapp.com/api/doctor")
+        
+        
+        
+      //  let task = NSURLSession.sharedSession().dataTaskWithURL(url!) {(data, response, error) in
+        //    println(NSString(data: data, encoding: NSUTF8StringEncoding))
+           
+            
+        //}
+        
+       // task.resume()
+        
     }
+
     
-    func getJSON(urlToRequest: String) -> NSData{
-        loadDataFromURL(NSURL(string: TopAppURL)!, completion:{(data, error) -> Void in
-            //2
-            if let urlData = data {
-                //3
-                success(iTunesData: urlData)
-            }
-        })
-    }
     
+
     func parseJSON(inputData: NSData) -> Array<NSDictionary>{
         var error: NSError?
         var boardsDictionary = NSJSONSerialization.JSONObjectWithData(inputData, options: NSJSONReadingOptions.MutableContainers, error: &error) as Array<NSDictionary>
@@ -52,7 +68,27 @@ class ViewController: UIViewController {
         return boardsDictionary
     }
     
-
-
+    func HTTPsendRequest(request: NSMutableURLRequest,
+        callback: (String, String?) -> Void) {
+            let task = NSURLSession.sharedSession().dataTaskWithRequest(
+                request,
+                {
+                    data, response, error in
+                    if error != nil {
+                        callback("", error.localizedDescription)
+                    } else {
+                        callback(
+                            NSString(data: data, encoding: NSUTF8StringEncoding)!,
+                            nil
+                        )
+                    }
+            })
+            
+            task.resume()
+    }
+    
+  // otro intento
+    
+    
 }
 

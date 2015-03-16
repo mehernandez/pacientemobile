@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E11F1F771AB6486700BA5113 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11F1F761AB6486700BA5113 /* SwiftyJSON.swift */; };
+		E11F1F7B1AB6954800BA5113 /* NuevoEpisodioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11F1F7A1AB6954800BA5113 /* NuevoEpisodioViewController.swift */; };
+		E11F1F7D1AB69F0200BA5113 /* EpisodiosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11F1F7C1AB69F0200BA5113 /* EpisodiosViewController.swift */; };
 		E16E62C71AB530B9005768EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16E62C61AB530B9005768EF /* AppDelegate.swift */; };
 		E16E62C91AB530B9005768EF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16E62C81AB530B9005768EF /* ViewController.swift */; };
 		E16E62CC1AB530B9005768EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E16E62CA1AB530B9005768EF /* Main.storyboard */; };
@@ -27,6 +30,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E11F1F761AB6486700BA5113 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		E11F1F7A1AB6954800BA5113 /* NuevoEpisodioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NuevoEpisodioViewController.swift; sourceTree = "<group>"; };
+		E11F1F7C1AB69F0200BA5113 /* EpisodiosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EpisodiosViewController.swift; sourceTree = "<group>"; };
 		E16E62C11AB530B9005768EF /* PacienteMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PacienteMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E16E62C51AB530B9005768EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E16E62C61AB530B9005768EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +85,7 @@
 		E16E62C31AB530B9005768EF /* PacienteMobile */ = {
 			isa = PBXGroup;
 			children = (
+				E11F1F761AB6486700BA5113 /* SwiftyJSON.swift */,
 				E16E62C61AB530B9005768EF /* AppDelegate.swift */,
 				E16E62C81AB530B9005768EF /* ViewController.swift */,
 				E16E62CA1AB530B9005768EF /* Main.storyboard */,
@@ -86,6 +93,8 @@
 				E16E62CF1AB530B9005768EF /* LaunchScreen.xib */,
 				E16E62C41AB530B9005768EF /* Supporting Files */,
 				E16E62E61AB5CFF5005768EF /* Paciente.swift */,
+				E11F1F7A1AB6954800BA5113 /* NuevoEpisodioViewController.swift */,
+				E11F1F7C1AB69F0200BA5113 /* EpisodiosViewController.swift */,
 			);
 			path = PacienteMobile;
 			sourceTree = "<group>";
@@ -218,6 +227,9 @@
 				E16E62E71AB5CFF5005768EF /* Paciente.swift in Sources */,
 				E16E62C91AB530B9005768EF /* ViewController.swift in Sources */,
 				E16E62C71AB530B9005768EF /* AppDelegate.swift in Sources */,
+				E11F1F7B1AB6954800BA5113 /* NuevoEpisodioViewController.swift in Sources */,
+				E11F1F7D1AB69F0200BA5113 /* EpisodiosViewController.swift in Sources */,
+				E11F1F771AB6486700BA5113 /* SwiftyJSON.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,6 +357,7 @@
 				INFOPLIST_FILE = PacienteMobile/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -355,6 +368,7 @@
 				INFOPLIST_FILE = PacienteMobile/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

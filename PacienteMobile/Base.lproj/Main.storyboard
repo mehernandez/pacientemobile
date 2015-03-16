@@ -73,6 +73,7 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="iay-Xu-1V7"/>
@@ -102,7 +103,7 @@
         <!--Usuario-->
         <scene sceneID="f8P-l1-egX">
             <objects>
-                <viewController id="Tho-hp-59D" sceneMemberID="viewController">
+                <viewController id="Tho-hp-59D" customClass="EpisodiosViewController" customModule="PacienteMobile" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0jA-Ig-8Dh"/>
                         <viewControllerLayoutGuide type="bottom" id="9dc-Ch-tC0"/>
@@ -172,76 +173,31 @@
                             </mask>
                         </variation>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem title="Item" id="YhD-4v-lJw"/>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" title="Usuario" id="SHg-vZ-IJM">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="Nqu-lN-Mty">
-                            <view key="customView" contentMode="scaleToFill" id="9ws-5V-2KJ">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sRr-xq-Jqw">
-                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                        <state key="normal" title="Salir">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <variation key="widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="21" y="2" width="44" height="30"/>
-                                        </variation>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <variation key="default">
-                                    <mask key="subviews">
-                                        <exclude reference="sRr-xq-Jqw"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact">
-                                    <mask key="subviews">
-                                        <include reference="sRr-xq-Jqw"/>
-                                    </mask>
-                                </variation>
-                            </view>
+                        <barButtonItem key="leftBarButtonItem" title="Salir" id="hGB-bW-ysm">
+                            <connections>
+                                <action selector="cerrarSesión:" destination="Tho-hp-59D" id="aGv-KY-6Uw"/>
+                            </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="mOx-SD-hvI">
-                            <view key="customView" contentMode="scaleToFill" id="4zn-gP-mpf">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wzr-IY-EYW">
-                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                        <state key="normal" title="Nuevo">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <variation key="widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="21" y="2" width="45" height="30"/>
-                                        </variation>
-                                        <connections>
-                                            <segue destination="I31-Dr-B3p" kind="show" id="phI-1i-P0u"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <variation key="default">
-                                    <mask key="subviews">
-                                        <exclude reference="Wzr-IY-EYW"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact">
-                                    <mask key="subviews">
-                                        <include reference="Wzr-IY-EYW"/>
-                                    </mask>
-                                </variation>
-                            </view>
+                        <barButtonItem key="rightBarButtonItem" title="Nuevo" id="yxY-Af-S1P">
+                            <connections>
+                                <segue destination="I31-Dr-B3p" kind="show" id="ccp-Dk-wra"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rL1-rC-72g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1096.5" y="-102"/>
         </scene>
-        <!--View Controller-->
+        <!--Nuevo Episodio View Controller-->
         <scene sceneID="qqD-8s-jUi">
             <objects>
-                <viewController id="I31-Dr-B3p" sceneMemberID="viewController">
+                <viewController id="I31-Dr-B3p" customClass="NuevoEpisodioViewController" customModule="PacienteMobile" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Hoc-JM-IDg"/>
                         <viewControllerLayoutGuide type="bottom" id="XNV-TN-RRB"/>
@@ -306,6 +262,9 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="btnGrabar" destination="Laa-J8-QeQ" id="pVt-18-5yF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oOa-uC-XcO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
