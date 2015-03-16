@@ -242,6 +242,9 @@
                                 <variation key="widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="40" y="360" width="63" height="30"/>
                                 </variation>
+                                <connections>
+                                    <action selector="grabar:" destination="I31-Dr-B3p" eventType="touchUpInside" id="TP1-jr-H9N"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
