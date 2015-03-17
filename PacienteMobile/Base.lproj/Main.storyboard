@@ -116,7 +116,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="72" id="OYI-oL-fkI">
+                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="cella" selectionStyle="default" indentationWidth="10" rowHeight="72" id="OYI-oL-fkI">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OYI-oL-fkI" id="1Qz-Db-39P">
@@ -189,6 +189,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="tableView" destination="xl9-J7-f8R" id="g9z-VP-iON"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rL1-rC-72g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
