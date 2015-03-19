@@ -16,6 +16,7 @@ AVAudioPlayerDelegate, AVAudioRecorderDelegate {
     
     var audioRecorder: AVAudioRecorder?
     var audioPlayer: AVAudioPlayer?
+    var audioFile : NSData?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +55,39 @@ AVAudioPlayerDelegate, AVAudioRecorderDelegate {
             
     }
     
+    @IBAction func reproducir(sender: UIButton) {
+        var readingError:NSError?
+        
+        audioFile = NSData(contentsOfURL: audioRecordingPath(),
+            options: .MappedRead,
+            error: &readingError)
+        
+        var playbackError:NSError?
+        
+        /* Form an audio player and make it play the recorded data */
+        audioPlayer = AVAudioPlayer(data: audioFile, error: &playbackError)
+        
+        
+        
+        /* Could we instantiate the audio player? */
+        if let player = audioPlayer{
+            player.delegate = self
+            
+            /* Prepare to play and start playing */
+            if player.prepareToPlay() && player.play(){
+                println("Started playing the recorded audio")
+            } else {
+                println("Could not play the audio")
+            }
+            
+        } else {
+            println("Failed to create an audio player")
+        }
+
+        
+    }
+    
+
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder!,
         successfully flag: Bool){
             
@@ -62,37 +96,41 @@ AVAudioPlayerDelegate, AVAudioRecorderDelegate {
                 println("Successfully stopped the audio recording process")
                 
                 /* Let's try to retrieve the data for the recorded file */
-                var playbackError:NSError?
+                
                 var readingError:NSError?
                 
-                let fileData = NSData(contentsOfURL: audioRecordingPath(),
+                    audioFile = NSData(contentsOfURL: audioRecordingPath(),
                     options: .MappedRead,
                     error: &readingError)
                 
+                var playbackError:NSError?
+                
                 /* Form an audio player and make it play the recorded data */
-                audioPlayer = AVAudioPlayer(data: fileData, error: &playbackError)
+                audioPlayer = AVAudioPlayer(data: audioFile, error: &playbackError)
+                
+                
                 
                 /* Could we instantiate the audio player? */
-                if let player = audioPlayer{
-                    player.delegate = self
+               // if let player = audioPlayer{
+                 //   player.delegate = self
                     
                     /* Prepare to play and start playing */
-                    if player.prepareToPlay() && player.play(){
-                        println("Started playing the recorded audio")
-                    } else {
-                        println("Could not play the audio")
-                    }
+                   // if player.prepareToPlay() && player.play(){
+                  //      println("Started playing the recorded audio")
+                 //   } else {
+                //        println("Could not play the audio")
+               //     }
                     
-                } else {
-                    println("Failed to create an audio player")
-                }
+              //  } else {
+               //     println("Failed to create an audio player")
+              //  }
                 
             } else {
                 println("Stopping the audio recording failed")
             }
             
             /* Here we don't need the audio recorder anymore */
-            self.audioRecorder = nil;
+           self.audioRecorder = nil;
             
     }
     

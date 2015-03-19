@@ -249,6 +249,18 @@
                                     <action selector="grabar:" destination="I31-Dr-B3p" eventType="touchUpInside" id="TP1-jr-H9N"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PyQ-MV-vqU">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="REPRODUCIR">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="257" y="360" width="99" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="reproducir:" destination="I31-Dr-B3p" eventType="touchUpInside" id="gWo-T7-QbA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
@@ -257,6 +269,7 @@
                                 <exclude reference="hCg-6e-S7w"/>
                                 <exclude reference="xj4-MW-lsy"/>
                                 <exclude reference="Laa-J8-QeQ"/>
+                                <exclude reference="PyQ-MV-vqU"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -265,6 +278,7 @@
                                 <include reference="hCg-6e-S7w"/>
                                 <include reference="xj4-MW-lsy"/>
                                 <include reference="Laa-J8-QeQ"/>
+                                <include reference="PyQ-MV-vqU"/>
                             </mask>
                         </variation>
                     </view>
