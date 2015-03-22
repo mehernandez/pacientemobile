@@ -29,6 +29,11 @@ AVAudioPlayerDelegate, AVAudioRecorderDelegate {
         // Dispose of any resources that can be recreated.
 }
     
+    
+    @IBAction func crearEpisodio(sender: UIButton) {
+        
+    }
+    
     // Github
     
     func audioPlayerBeginInterruption(player: AVAudioPlayer!) {
