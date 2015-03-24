@@ -9,7 +9,18 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    struct MyVariables {
+        static var usuario : NSDictionary = ["":""]
+    }
+    
+    @IBOutlet weak var usuarioText: UITextField!
+    
+    @IBOutlet weak var claveText: UITextField!
 
+    @IBOutlet weak var errorText: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -20,41 +31,15 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func logear() {
+     func logear() -> NSDictionary?{
         
-        var googleUrl = NSURL(string: "http://neuromed.herokuapp.com/api/doctor")
+      var  con: Connector = Connector()
         
-        var request = NSMutableURLRequest(URL: googleUrl!)
-        request.HTTPMethod = "GET"
-        request.addValue("text/html", forHTTPHeaderField: "Content-Type")
+         con.extraPost("/usuario/autenticar", array: ["email": self.usuarioText.text , "password": self.claveText.text] , verb : "POST")
         
-        var session = NSURLSession.sharedSession()
+        sleep(2)
         
-        let task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
-            if((error) != nil) {
-                println(error.localizedDescription)
-            }
-            
-            var strData = NSString(data: data, encoding: NSASCIIStringEncoding)
-            println(strData)
-        })
-        
-        task.resume()
-        
-        
-        
-        
-        //let url = NSURL(string: "http://neuromed.herokuapp.com/api/doctor")
-        
-        
-        
-      //  let task = NSURLSession.sharedSession().dataTaskWithURL(url!) {(data, response, error) in
-        //    println(NSString(data: data, encoding: NSUTF8StringEncoding))
-           
-            
-        //}
-        
-       // task.resume()
+        return con.result
         
     }
 
@@ -68,26 +53,27 @@ class ViewController: UIViewController {
         return boardsDictionary
     }
     
-    func HTTPsendRequest(request: NSMutableURLRequest,
-        callback: (String, String?) -> Void) {
-            let task = NSURLSession.sharedSession().dataTaskWithRequest(
-                request,
-                {
-                    data, response, error in
-                    if error != nil {
-                        callback("", error.localizedDescription)
-                    } else {
-                        callback(
-                            NSString(data: data, encoding: NSUTF8StringEncoding)!,
-                            nil
-                        )
-                    }
-            })
-            
-            task.resume()
+
+    
+    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
+
+        var data : NSDictionary? = logear()
+
+        
+        
+       if (data != nil && data?["rol"]! as NSString == "Paciente"){
+        
+        MyVariables.usuario = data!
+      
+            return true
+        }else{
+        
+         self.errorText.hidden = false
+           return false
+    }
     }
     
-  // otro intento
+  
     
     
 }

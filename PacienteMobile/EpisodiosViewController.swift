@@ -10,7 +10,10 @@ import UIKit
 
 class EpisodiosViewController: UIViewController , UITableViewDelegate,UITableViewDataSource {
     
-    var items = Connector().doGet("/doctor");
+ 
+    
+    
+    var items : NSArray = []
     
     
     @IBOutlet weak var tableView: UITableView!
@@ -25,6 +28,22 @@ class EpisodiosViewController: UIViewController , UITableViewDelegate,UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+           var idx = ViewController.MyVariables.usuario["id"] as NSInteger
+        
+        
+        
+       var con = Connector()
+       // con.extraPost("/paciente/\(idx)/episodio", array: ["":""], verb: "GET")
+        
+        
+        
+        // sleep(5)
+        
+        println("El result es  \(con.result)")
+        
+         items = con.doGet("/paciente/\(idx)/episodio")
+            
         // Do any additional setup after loading the view, typically from a nib.
         
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cella")
@@ -50,7 +69,7 @@ class EpisodiosViewController: UIViewController , UITableViewDelegate,UITableVie
         
         var x : JSON = JSON(items[indexPath.row])
         
-        var c = x["apellido"].string!
+        var c = x["fecha"].string!
         
          cell.textLabel?.text = String(c)
         

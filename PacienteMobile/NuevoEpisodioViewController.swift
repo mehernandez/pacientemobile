@@ -10,16 +10,39 @@ import UIKit
 import AVFoundation
 
 class NuevoEpisodioViewController: UIViewController,
-AVAudioPlayerDelegate, AVAudioRecorderDelegate {
+AVAudioPlayerDelegate, AVAudioRecorderDelegate ,  NSURLSessionDelegate , NSURLSessionTaskDelegate , NSURLSessionDataDelegate{
     
     @IBOutlet weak var btnGrabar: UIButton!
+    
+    
     
     var audioRecorder: AVAudioRecorder?
     var audioPlayer: AVAudioPlayer?
     var audioFile : NSData?
     
+    var responseData = NSMutableData()
+    
+    var idEpisodio = 0
+    
+    @IBOutlet weak var localizacionText: UITextField!
+    @IBOutlet weak var dolorText: UILabel!
+    
+    @IBOutlet weak var stepper: UIStepper!
+    
+    @IBAction func stepperAction(sender: UIStepper) {
+        
+        dolorText.text = Int(sender.value).description
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        stepper.wraps = true
+        stepper.autorepeat = true
+        stepper.maximumValue = 10
+        stepper.minimumValue = 1
+        
         
     }
     
@@ -32,7 +55,74 @@ AVAudioPlayerDelegate, AVAudioRecorderDelegate {
     
     @IBAction func crearEpisodio(sender: UIButton) {
         
+        var con = Connector()
+        
+        var idx = ViewController.MyVariables.usuario["id"] as NSInteger
+        
+        var todaysDate:NSDate = NSDate()
+        var dateFormatter:NSDateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        var dateInFormat: String = dateFormatter.stringFromDate(todaysDate)
+   
+        println("la fecha es \(dateInFormat)")
+        
+        var t1 = dolorText.text?.toInt()
+        
+        var d : [String : AnyObject] =  [ "fecha" : dateInFormat , "localizacion" : localizacionText.text]
+        d["nivelDolor"] = t1
+        
+        con.extraPost("/paciente/\(idx)/episodio", array: d , verb: "POST")
+        
+        
+        idEpisodio = con.result?["id"] as NSInteger
+      //  var readingError:NSError?
+        
+      //  audioFile = NSData(contentsOfURL: audioRecordingPath(),
+        //    options: .MappedRead,
+        //    error: &readingError)
+        
+        //println(audioFile)
+        
+      //  con.postData("/paciente/2/episodio/2", data: audioFile!, vista: self)
+      //  con.extraPost("/paciente/2/episodio/2", array: ["grabacion": audioFile] , verb: "PUT")
+        
+        
+        
+        // envio del sonido , pero hay que cambiarlo :/
+        
+        
+   //     var connector = Connector()
+        
+   //     var readingError:NSError?
+        
+    //    var audioFile = NSData(contentsOfURL: audioRecordingPath(),
+     //       options: .MappedRead,
+     //       error: &readingError)
+        
+      //  connector.postData("/url", data: audioFile!, vista: self)
     }
+    
+    @IBAction func subirSonido(sender: UIButton) {
+        
+        var idx = ViewController.MyVariables.usuario["id"] as NSInteger
+        
+             var connector = Connector()
+        
+             var readingError:NSError?
+        
+        var audioFile = NSData(contentsOfURL: audioRecordingPath(),
+               options: .MappedRead,
+               error: &readingError)
+        
+        //  connector.postData("/paciente/\(idx)/episodio/2", data: audioFile!, vista: self)
+        
+        connector.fileUpload("/paciente/\(idx)/episodio/2", dat: audioFile!)
+
+        
+    }
+
+    
+    
     
     // Github
     
@@ -150,7 +240,7 @@ AVAudioPlayerDelegate, AVAudioRecorderDelegate {
             create: false,
             error: nil)
         
-        return documentsFolderUrl!.URLByAppendingPathComponent("Recording.m4a")
+        return documentsFolderUrl!.URLByAppendingPathComponent("Grabacion.m4a")
         
     }
     
@@ -251,5 +341,30 @@ AVAudioPlayerDelegate, AVAudioRecorderDelegate {
         }
         
     }
+    
+    
+    func URLSession(session: NSURLSession, task: NSURLSessionTask, didCompleteWithError error: NSError?) {
+        if error != nil{
+            println("Error en la URLSESSION")
+        }else{
+            println("Upload completed")
+        }
+        
+    }
+    
+    func URLSession(session: NSURLSession, task: NSURLSessionTask, didSendBodyData bytesSent: Int64, totalBytesSent: Int64, totalBytesExpectedToSend: Int64) {
+        var uploadProgress : Double = Double(totalBytesSent)/Double(totalBytesExpectedToSend)
+        println("Uploaded \(uploadProgress * 100)%")
+    }
+    
+    func URLSession(session: NSURLSession, dataTask: NSURLSessionDataTask, didReceiveResponse response: NSURLResponse, completionHandler: (NSURLSessionResponseDisposition) -> Void) {
+        println("Recieve response \(response)")
+        completionHandler(NSURLSessionResponseDisposition.Allow)
+    }
+    
+    func URLSession(session: NSURLSession, dataTask: NSURLSessionDataTask, didReceiveData data: NSData) {
+        responseData.appendData(data)
+    }
+
 
 }
