@@ -8,6 +8,8 @@
 
 import UIKit
 import AVFoundation
+import Alamofire
+
 
 class NuevoEpisodioViewController: UIViewController,
 AVAudioPlayerDelegate, AVAudioRecorderDelegate ,  NSURLSessionDelegate , NSURLSessionTaskDelegate , NSURLSessionDataDelegate{
@@ -21,6 +23,8 @@ AVAudioPlayerDelegate, AVAudioRecorderDelegate ,  NSURLSessionDelegate , NSURLSe
     var audioFile : NSData?
     
     var responseData = NSMutableData()
+    
+    
     
     var idEpisodio = 0
     
@@ -116,8 +120,18 @@ AVAudioPlayerDelegate, AVAudioRecorderDelegate ,  NSURLSessionDelegate , NSURLSe
         
         //  connector.postData("/paciente/\(idx)/episodio/2", data: audioFile!, vista: self)
         
-        connector.fileUpload("/paciente/\(idx)/episodio/2", dat: audioFile!)
+        //connector.fileUpload("/paciente/\(idx)/episodio/2", dat: audioFile!)
+        
+        
 
+        Alamofire.upload(.PUT, connector.requestUrl + "/paciente/\(idx)/episodio/2", audioFile!).progress { (bytesWritten, totalBytesWritten, totalBytesExpectedToWrite) in
+            println(totalBytesWritten)
+            }
+            .responseJSON { (request, response, JSON, error) in
+                println(response)
+        }
+
+        
         
     }
 
