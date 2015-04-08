@@ -29,27 +29,31 @@ class EpisodiosViewController: UIViewController , UITableViewDelegate,UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        var x = ViewController.MyVariables.usuario["nombre"] as NSString
+       
+        self.title = "Episodios \(x)"
+        
+        
            var idx = ViewController.MyVariables.usuario["id"] as NSInteger
         
         
         
        var con = Connector()
-       // con.extraPost("/paciente/\(idx)/episodio", array: ["":""], verb: "GET")
-        
-        
-        
+
         // sleep(5)
         
-        println("El result es  \(con.result)")
+        //println("El result es  \(con.result)")
         
          items = con.doGet("/paciente/\(idx)/episodio")
             
         // Do any additional setup after loading the view, typically from a nib.
         
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cella")
+        tableView.registerClass(EpisodioCell.self, forCellReuseIdentifier: "cella")
         tableView.dataSource = self
+        tableView.delegate = self
         
-        println(items)
+        //println(items)
     }
     
     override func didReceiveMemoryWarning() {
@@ -62,21 +66,49 @@ class EpisodiosViewController: UIViewController , UITableViewDelegate,UITableVie
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell : UITableViewCell = tableView.dequeueReusableCellWithIdentifier("cella") as UITableViewCell
+        let cell  = tableView.dequeueReusableCellWithIdentifier("superCell",forIndexPath: indexPath) as EpisodioCell
      
-     //   cell.textLabel?.text = items[indexPath.row]
+
        
         
         var x : JSON = JSON(items[indexPath.row])
         
-        var c = x["fecha"].string!
+        var c = x["fecha"]
         
-         cell.textLabel?.text = String(c)
+         cell.fechaText?.text = "\(c)"
+        
+        let h = x["id"]
+        cell.idText?.text = "\(h)"
+        
+        let j1 = x["nivelDolor"]
         
         
+        cell.nivelDolor = "\(j1)".toInt()!
+        
+        let j2 = x["localizacion"]
+        
+        cell.localizacion = "\(j2)"
         
         return cell
         
     }
+    
+ func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    
+                let cell =  tableView.cellForRowAtIndexPath(indexPath) as EpisodioCell
+    
+                //Ver pacientes selected
+                let main : UIStoryboard = self.storyboard!
+                let controller : EpisodioDetail =  main.instantiateViewControllerWithIdentifier("episodioDetail") as EpisodioDetail
+                controller.localizacion = cell.localizacion
+                controller.nivelDolor = cell.nivelDolor
+                self.navigationController?.pushViewController(controller, animated: true)
+    
+
+            
+    
+        
+        println("This is the row: \(indexPath.row) ")
+}
 
 }

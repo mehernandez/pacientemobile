@@ -7,10 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E10AC0251AD4F5ED00256670 /* EpisodioDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10AC0241AD4F5ED00256670 /* EpisodioDetail.swift */; };
 		E11F1F771AB6486700BA5113 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11F1F761AB6486700BA5113 /* SwiftyJSON.swift */; };
 		E11F1F7B1AB6954800BA5113 /* NuevoEpisodioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11F1F7A1AB6954800BA5113 /* NuevoEpisodioViewController.swift */; };
 		E11F1F7D1AB69F0200BA5113 /* EpisodiosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11F1F7C1AB69F0200BA5113 /* EpisodiosViewController.swift */; };
 		E1246FDB1AB7DA5A0021C884 /* Connector.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1246FDA1AB7DA5A0021C884 /* Connector.swift */; };
+		E150C0621AC3A55D008AAC01 /* GCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = E150C05A1AC3A55D008AAC01 /* GCD.swift */; };
+		E150C0631AC3A55D008AAC01 /* Net.swift in Sources */ = {isa = PBXBuildFile; fileRef = E150C05B1AC3A55D008AAC01 /* Net.swift */; };
+		E150C0641AC3A55D008AAC01 /* NetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E150C05C1AC3A55D008AAC01 /* NetData.swift */; };
+		E150C0651AC3A55D008AAC01 /* NetDownloadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = E150C05D1AC3A55D008AAC01 /* NetDownloadTask.swift */; };
+		E150C0661AC3A55D008AAC01 /* NetHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E150C05E1AC3A55D008AAC01 /* NetHelper.swift */; };
+		E150C0671AC3A55D008AAC01 /* NetRequestSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = E150C05F1AC3A55D008AAC01 /* NetRequestSerialization.swift */; };
+		E150C0681AC3A55D008AAC01 /* NetResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E150C0601AC3A55D008AAC01 /* NetResponseData.swift */; };
+		E150C0691AC3A55D008AAC01 /* NetUploadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = E150C0611AC3A55D008AAC01 /* NetUploadTask.swift */; };
+		E150C06E1AC3AF84008AAC01 /* EpisodioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E150C06D1AC3AF84008AAC01 /* EpisodioCell.swift */; };
 		E16E62C71AB530B9005768EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16E62C61AB530B9005768EF /* AppDelegate.swift */; };
 		E16E62C91AB530B9005768EF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16E62C81AB530B9005768EF /* ViewController.swift */; };
 		E16E62CC1AB530B9005768EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E16E62CA1AB530B9005768EF /* Main.storyboard */; };
@@ -82,10 +92,20 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E10AC0241AD4F5ED00256670 /* EpisodioDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EpisodioDetail.swift; sourceTree = "<group>"; };
 		E11F1F761AB6486700BA5113 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		E11F1F7A1AB6954800BA5113 /* NuevoEpisodioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NuevoEpisodioViewController.swift; sourceTree = "<group>"; };
 		E11F1F7C1AB69F0200BA5113 /* EpisodiosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EpisodiosViewController.swift; sourceTree = "<group>"; };
 		E1246FDA1AB7DA5A0021C884 /* Connector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connector.swift; sourceTree = "<group>"; };
+		E150C05A1AC3A55D008AAC01 /* GCD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCD.swift; sourceTree = "<group>"; };
+		E150C05B1AC3A55D008AAC01 /* Net.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Net.swift; sourceTree = "<group>"; };
+		E150C05C1AC3A55D008AAC01 /* NetData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetData.swift; sourceTree = "<group>"; };
+		E150C05D1AC3A55D008AAC01 /* NetDownloadTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetDownloadTask.swift; sourceTree = "<group>"; };
+		E150C05E1AC3A55D008AAC01 /* NetHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetHelper.swift; sourceTree = "<group>"; };
+		E150C05F1AC3A55D008AAC01 /* NetRequestSerialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetRequestSerialization.swift; sourceTree = "<group>"; };
+		E150C0601AC3A55D008AAC01 /* NetResponseData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetResponseData.swift; sourceTree = "<group>"; };
+		E150C0611AC3A55D008AAC01 /* NetUploadTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetUploadTask.swift; sourceTree = "<group>"; };
+		E150C06D1AC3AF84008AAC01 /* EpisodioCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EpisodioCell.swift; sourceTree = "<group>"; };
 		E16E62C11AB530B9005768EF /* PacienteMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PacienteMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E16E62C51AB530B9005768EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E16E62C61AB530B9005768EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -119,6 +139,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E150C0591AC3A55D008AAC01 /* Net */ = {
+			isa = PBXGroup;
+			children = (
+				E150C05A1AC3A55D008AAC01 /* GCD.swift */,
+				E150C05B1AC3A55D008AAC01 /* Net.swift */,
+				E150C05C1AC3A55D008AAC01 /* NetData.swift */,
+				E150C05D1AC3A55D008AAC01 /* NetDownloadTask.swift */,
+				E150C05E1AC3A55D008AAC01 /* NetHelper.swift */,
+				E150C05F1AC3A55D008AAC01 /* NetRequestSerialization.swift */,
+				E150C0601AC3A55D008AAC01 /* NetResponseData.swift */,
+				E150C0611AC3A55D008AAC01 /* NetUploadTask.swift */,
+			);
+			path = Net;
+			sourceTree = "<group>";
+		};
 		E16E62B81AB530B9005768EF = {
 			isa = PBXGroup;
 			children = (
@@ -141,6 +176,7 @@
 		E16E62C31AB530B9005768EF /* PacienteMobile */ = {
 			isa = PBXGroup;
 			children = (
+				E150C0591AC3A55D008AAC01 /* Net */,
 				E1246FDA1AB7DA5A0021C884 /* Connector.swift */,
 				E11F1F761AB6486700BA5113 /* SwiftyJSON.swift */,
 				E16E62C61AB530B9005768EF /* AppDelegate.swift */,
@@ -152,6 +188,8 @@
 				E16E62E61AB5CFF5005768EF /* Paciente.swift */,
 				E11F1F7A1AB6954800BA5113 /* NuevoEpisodioViewController.swift */,
 				E11F1F7C1AB69F0200BA5113 /* EpisodiosViewController.swift */,
+				E150C06D1AC3AF84008AAC01 /* EpisodioCell.swift */,
+				E10AC0241AD4F5ED00256670 /* EpisodioDetail.swift */,
 			);
 			path = PacienteMobile;
 			sourceTree = "<group>";
@@ -333,10 +371,20 @@
 			files = (
 				E16E62E71AB5CFF5005768EF /* Paciente.swift in Sources */,
 				E16E62C91AB530B9005768EF /* ViewController.swift in Sources */,
+				E150C0621AC3A55D008AAC01 /* GCD.swift in Sources */,
 				E16E62C71AB530B9005768EF /* AppDelegate.swift in Sources */,
 				E11F1F7B1AB6954800BA5113 /* NuevoEpisodioViewController.swift in Sources */,
+				E150C0661AC3A55D008AAC01 /* NetHelper.swift in Sources */,
+				E150C0651AC3A55D008AAC01 /* NetDownloadTask.swift in Sources */,
 				E11F1F7D1AB69F0200BA5113 /* EpisodiosViewController.swift in Sources */,
+				E10AC0251AD4F5ED00256670 /* EpisodioDetail.swift in Sources */,
 				E1246FDB1AB7DA5A0021C884 /* Connector.swift in Sources */,
+				E150C06E1AC3AF84008AAC01 /* EpisodioCell.swift in Sources */,
+				E150C0671AC3A55D008AAC01 /* NetRequestSerialization.swift in Sources */,
+				E150C0691AC3A55D008AAC01 /* NetUploadTask.swift in Sources */,
+				E150C0641AC3A55D008AAC01 /* NetData.swift in Sources */,
+				E150C0631AC3A55D008AAC01 /* Net.swift in Sources */,
+				E150C0681AC3A55D008AAC01 /* NetResponseData.swift in Sources */,
 				E11F1F771AB6486700BA5113 /* SwiftyJSON.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

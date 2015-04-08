@@ -67,8 +67,7 @@ AVAudioPlayerDelegate, AVAudioRecorderDelegate ,  NSURLSessionDelegate , NSURLSe
         var dateFormatter:NSDateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "MM/dd/yyyy"
         var dateInFormat: String = dateFormatter.stringFromDate(todaysDate)
-   
-        println("la fecha es \(dateInFormat)")
+
         
         var t1 = dolorText.text?.toInt()
         
@@ -77,13 +76,20 @@ AVAudioPlayerDelegate, AVAudioRecorderDelegate ,  NSURLSessionDelegate , NSURLSe
         
         con.extraPost("/paciente/\(idx)/episodio", array: d , verb: "POST")
         
+        println("Se acaba de enviar el nuevo episodio")
+        sleep(2)
+        
         
         idEpisodio = con.result?["id"] as NSInteger
-      //  var readingError:NSError?
         
-      //  audioFile = NSData(contentsOfURL: audioRecordingPath(),
-        //    options: .MappedRead,
-        //    error: &readingError)
+    //      var readingError:NSError?
+        
+    //      audioFile = NSData(contentsOfURL: audioRecordingPath(),
+    //        options: .MappedRead,
+    //        error: &readingError)
+        
+     //   con.doPutData("/paciente/\(idx)/episodio/\(idEpisodio)", data: audioFile!, params: ["":""], filename: "grabacion.m4a")
+  
         
         //println(audioFile)
         
@@ -110,7 +116,7 @@ AVAudioPlayerDelegate, AVAudioRecorderDelegate ,  NSURLSessionDelegate , NSURLSe
         
         var idx = ViewController.MyVariables.usuario["id"] as NSInteger
         
-             var connector = Connector()
+             var con = Connector()
         
              var readingError:NSError?
         
@@ -118,21 +124,11 @@ AVAudioPlayerDelegate, AVAudioRecorderDelegate ,  NSURLSessionDelegate , NSURLSe
                options: .MappedRead,
                error: &readingError)
         
-        //  connector.postData("/paciente/\(idx)/episodio/2", data: audioFile!, vista: self)
-        
-        //connector.fileUpload("/paciente/\(idx)/episodio/2", dat: audioFile!)
-        
-        
 
-        Alamofire.upload(.PUT, connector.requestUrl + "/paciente/\(idx)/episodio/2", audioFile!).progress { (bytesWritten, totalBytesWritten, totalBytesExpectedToWrite) in
-            println(totalBytesWritten)
-            }
-            .responseJSON { (request, response, JSON, error) in
-                println(response)
+        if(audioFile != nil){
+
+         con.doPutData("/paciente/\(idx)/episodio/\(idEpisodio)", data: audioFile!, params: ["":""], filename: "grabacion.m4a")
         }
-
-        
-        
     }
 
     
@@ -254,7 +250,7 @@ AVAudioPlayerDelegate, AVAudioRecorderDelegate ,  NSURLSessionDelegate , NSURLSe
             create: false,
             error: nil)
         
-        return documentsFolderUrl!.URLByAppendingPathComponent("Grabacion.m4a")
+        return documentsFolderUrl!.URLByAppendingPathComponent("grabacion.m4a")
         
     }
     
