@@ -14,7 +14,7 @@ import UIKit
 class Connector  {
     
     let method : String
-    let requestUrl = "http://neuromed.herokuapp.com/api"
+    let requestUrl = "https://neuromed.herokuapp.com/api"
     
      var result : NSDictionary?
 
@@ -92,6 +92,8 @@ class Connector  {
         var request : NSMutableURLRequest = NSMutableURLRequest()
         request.URL = NSURL(string: requestUrl + target)
         request.HTTPMethod = "GET"
+        println(NSUserDefaults.standardUserDefaults().valueForKey("TOKEN"))
+        request.addValue(NSUserDefaults.standardUserDefaults().valueForKey("TOKEN") as? String, forHTTPHeaderField: "X-Auth-Token")
         
         var response: NSURLResponse?
         
@@ -101,7 +103,7 @@ class Connector  {
         
         //WARNING! Check if json response is an ARRAY or a DICTIONARY, in that case, cast the method accordingly
         
-        var jsonResult: NSArray = NSJSONSerialization.JSONObjectWithData(urlData!, options:NSJSONReadingOptions.MutableContainers, error:err) as NSArray
+        var jsonResult: NSArray = NSJSONSerialization.JSONObjectWithData(urlData!, options:NSJSONReadingOptions.MutableContainers, error:err) as! NSArray
         
         return jsonResult
     }
@@ -129,6 +131,7 @@ class Connector  {
         var request : NSMutableURLRequest = NSMutableURLRequest()
         request.URL = NSURL(string: requestUrl + url)
         request.HTTPMethod = "POST"
+        request.addValue(NSUserDefaults.standardUserDefaults().valueForKey("TOKEN") as? String, forHTTPHeaderField: "X-Auth-Token")
         
         var err : NSError?
         request.HTTPBody = NSJSONSerialization.dataWithJSONObject(dict, options: nil, error: &err)
@@ -146,7 +149,7 @@ class Connector  {
         
         if(urlData != nil){
             //Handle ERROR!
-            jsonResult = NSJSONSerialization.JSONObjectWithData(urlData!, options:NSJSONReadingOptions.MutableContainers, error:error) as NSDictionary
+            jsonResult = NSJSONSerialization.JSONObjectWithData(urlData!, options:NSJSONReadingOptions.MutableContainers, error:error) as! NSDictionary
         }
         
         return jsonResult

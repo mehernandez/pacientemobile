@@ -217,13 +217,13 @@ class Net : NSObject, NSURLSessionDataDelegate, NSURLSessionDownloadDelegate, NS
     func URLSession(session: NSURLSession!, task: NSURLSessionTask!, didCompleteWithError error: NSError!) {
         if (error != nil) {
             if task is NSURLSessionDownloadTask {
-                let downloadTask = task as NSURLSessionDownloadTask
+                let downloadTask = task as! NSURLSessionDownloadTask
                 let downloader = downloaders[downloadTask]
                 downloader?.didComplete(nil, error: error)
                 downloaders.removeValueForKey(downloadTask)
             }
             else if task is NSURLSessionUploadTask {
-                let uploadTask = task as NSURLSessionUploadTask
+                let uploadTask = task as! NSURLSessionUploadTask
                 let uploader = uploaders[uploadTask]
                 uploader?.didComplete(error)
                 uploaders.removeValueForKey(uploadTask)
@@ -231,7 +231,7 @@ class Net : NSObject, NSURLSessionDataDelegate, NSURLSessionDownloadDelegate, NS
         }
         else {
             if task is NSURLSessionUploadTask {
-                let uploadTask = task as NSURLSessionUploadTask
+                let uploadTask = task as! NSURLSessionUploadTask
                 let uploader = uploaders[uploadTask]
                 uploader?.didComplete(nil)
                 uploaders.removeValueForKey(uploadTask)
@@ -244,7 +244,7 @@ class Net : NSObject, NSURLSessionDataDelegate, NSURLSessionDownloadDelegate, NS
         if task is NSURLSessionUploadTask {
             let progress = Double(totalBytesSent) / Double(totalBytesExpectedToSend)
             
-            let uploadTask = task as NSURLSessionUploadTask
+            let uploadTask = task as! NSURLSessionUploadTask
             let uploader = uploaders[uploadTask]
             uploader?.updateProgress(Float(progress))
         }

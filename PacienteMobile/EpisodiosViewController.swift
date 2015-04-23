@@ -30,12 +30,12 @@ class EpisodiosViewController: UIViewController , UITableViewDelegate,UITableVie
         super.viewDidLoad()
         
         
-        var x = ViewController.MyVariables.usuario["nombre"] as NSString
+       // var x = ViewController.MyVariables.usuario["nombre"] as! NSString
        
-        self.title = "Episodios \(x)"
+        self.title = "Episodios"
         
         
-           var idx = ViewController.MyVariables.usuario["id"] as NSInteger
+           var idx = ViewController.MyVariables.usuario["id"] as! NSInteger
         
         
         
@@ -46,6 +46,8 @@ class EpisodiosViewController: UIViewController , UITableViewDelegate,UITableVie
         //println("El result es  \(con.result)")
         
          items = con.doGet("/paciente/\(idx)/episodio")
+        
+        print(items)
             
         // Do any additional setup after loading the view, typically from a nib.
         
@@ -66,28 +68,28 @@ class EpisodiosViewController: UIViewController , UITableViewDelegate,UITableVie
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell  = tableView.dequeueReusableCellWithIdentifier("superCell",forIndexPath: indexPath) as EpisodioCell
+        let cell  = tableView.dequeueReusableCellWithIdentifier("superCell",forIndexPath: indexPath) as! EpisodioCell
      
 
        
         
-        var x : JSON = JSON(items[indexPath.row])
+        var x : NSDictionary = items[indexPath.row] as! NSDictionary
         
-        var c = x["fecha"]
+        var c = x["fecha"] as! String
         
-         cell.fechaText?.text = "\(c)"
+         cell.fechaText?.text = c
         
-        let h = x["id"]
+        let h = x["id"] as! Int
         cell.idText?.text = "\(h)"
         
-        let j1 = x["nivelDolor"]
+        let j1 = x["nivelDolor"] as! Int
         
         
-        cell.nivelDolor = "\(j1)".toInt()!
+        cell.nivelDolor = j1
         
-        let j2 = x["localizacion"]
+        let j2 = x["localizacion"] as! String
         
-        cell.localizacion = "\(j2)"
+        cell.localizacion = j2
         
         return cell
         
@@ -95,11 +97,11 @@ class EpisodiosViewController: UIViewController , UITableViewDelegate,UITableVie
     
  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     
-                let cell =  tableView.cellForRowAtIndexPath(indexPath) as EpisodioCell
+                let cell =  tableView.cellForRowAtIndexPath(indexPath) as! EpisodioCell
     
                 //Ver pacientes selected
                 let main : UIStoryboard = self.storyboard!
-                let controller : EpisodioDetail =  main.instantiateViewControllerWithIdentifier("episodioDetail") as EpisodioDetail
+                let controller : EpisodioDetail =  main.instantiateViewControllerWithIdentifier("episodioDetail") as! EpisodioDetail
                 controller.localizacion = cell.localizacion
                 controller.nivelDolor = cell.nivelDolor
                 self.navigationController?.pushViewController(controller, animated: true)

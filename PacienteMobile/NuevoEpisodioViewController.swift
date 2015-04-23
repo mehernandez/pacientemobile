@@ -8,7 +8,7 @@
 
 import UIKit
 import AVFoundation
-import Alamofire
+
 
 
 class NuevoEpisodioViewController: UIViewController,
@@ -61,7 +61,7 @@ AVAudioPlayerDelegate, AVAudioRecorderDelegate ,  NSURLSessionDelegate , NSURLSe
         
         var con = Connector()
         
-        var idx = ViewController.MyVariables.usuario["id"] as NSInteger
+        var idx = ViewController.MyVariables.usuario["id"] as! NSInteger
         
         var todaysDate:NSDate = NSDate()
         var dateFormatter:NSDateFormatter = NSDateFormatter()
@@ -74,13 +74,20 @@ AVAudioPlayerDelegate, AVAudioRecorderDelegate ,  NSURLSessionDelegate , NSURLSe
         var d : [String : AnyObject] =  [ "fecha" : dateInFormat , "localizacion" : localizacionText.text]
         d["nivelDolor"] = t1
         
-        con.extraPost("/paciente/\(idx)/episodio", array: d , verb: "POST")
+        let resss = con.doPost("/paciente/\(idx)/episodio", dict: d) as NSDictionary
         
         println("Se acaba de enviar el nuevo episodio")
         sleep(2)
         
+        stepper.value = 1
+        dolorText.text = "1"
+        localizacionText.text = ""
         
-        idEpisodio = con.result?["id"] as NSInteger
+        
+        print (resss)
+        
+        
+     //   idEpisodio = con.result?["id"] as! NSInteger
         
     //      var readingError:NSError?
         
@@ -114,7 +121,7 @@ AVAudioPlayerDelegate, AVAudioRecorderDelegate ,  NSURLSessionDelegate , NSURLSe
     
     @IBAction func subirSonido(sender: UIButton) {
         
-        var idx = ViewController.MyVariables.usuario["id"] as NSInteger
+        var idx = ViewController.MyVariables.usuario["id"] as! NSInteger
         
              var con = Connector()
         
